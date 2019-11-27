@@ -14,31 +14,24 @@ class App extends React.Component {
     }
   }
 
-  // console.log(setOfNum)
-
   handleFormSubmit = (event) => {
     event.preventDefault()
-
-
   }
 
+
   handleNumbertext = (event) => {
-
-
-
     this.setState({
       setOfNum: event.target.value
     })
-
-
   }
 
   handleSelect = (event) => {
-
     this.setState({
       operation: event.target.value,
     })
   }
+
+
 
   results = (event) => {
     let input = this.state.setOfNum
@@ -46,16 +39,16 @@ class App extends React.Component {
     let sum = 0
     let obj = {}
     let average = 0
-   
-      for (let i = 0; i < splitInput.length; i++) {
-        sum += Number(splitInput[i])
-      }
-      if (this.state.operation === "sum") {
-        this.setState({
-          result: sum
-        })
-      }
- else if (this.state.operation === "mode") {
+
+    for (let i = 0; i < splitInput.length; i++) {
+      sum += Number(splitInput[i])
+    }
+    if (this.state.operation === "sum") {
+      this.setState({
+        result: sum
+      })
+    }
+    else if (this.state.operation === "mode") {
       for (let i = 0; i < splitInput.length; i++) {
         if (!obj[splitInput[i]]) {
           obj[splitInput[i]] = 1
@@ -63,15 +56,15 @@ class App extends React.Component {
           obj[splitInput[i]]++
         }
       }
-      let mode = Object.keys(obj).reduce((a, b) => 
-      obj[a] > obj[b] ? a : b)
+      let mode = Object.keys(obj).reduce((a, b) =>
+        obj[a] > obj[b] ? a : b)
       this.setState({
         result: mode
       })
 
 
-    }else if(this.state.operation === "average"){
-      average = sum/splitInput.length
+    } else if (this.state.operation === "average") {
+      average = sum / splitInput.length
       this.setState({
         result: average
       })
